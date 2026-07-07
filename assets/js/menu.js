@@ -22,9 +22,18 @@ export function menu() {
   };
 
   menuToggle.addEventListener("click", () => {
+    console.log("Botão clicado");
+
     const isOpen = nav.classList.contains("is-open");
     setMenuState(!isOpen);
+
+    console.log(nav.classList);
   });
+
+  // menuToggle.addEventListener("click", () => {
+  //   const isOpen = nav.classList.contains("is-open");
+  //   setMenuState(!isOpen);
+  // });
 
   navLinks.forEach((link) => {
     link.addEventListener("click", () => {
