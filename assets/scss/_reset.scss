@@ -1,0 +1,158 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: $font-main;
+}
+
+::selection {
+  background-color: $color-main;
+  color: $color-white;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+button,
+input {
+  border: 0;
+  font-family: $font-main;
+
+  &:focus {
+    border: 0;
+  }
+}
+
+body {
+  font-family: $font-main;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(152, 109, 255, 0.16),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(77, 184, 255, 0.16),
+      transparent 24%
+    ),
+    linear-gradient(135deg, #040615 0%, #080d1f 44%, #040615 100%);
+  color: $color-white;
+  overflow-x: hidden;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.025),
+    transparent 30%,
+    rgba(255, 255, 255, 0.015)
+  );
+  z-index: -1;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+  scroll-padding-top: 100px;
+}
+
+main {
+  position: relative;
+}
+
+section {
+  position: relative;
+  scroll-margin-top: 100px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 24px;
+  z-index: 2000;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: $color-white;
+  color: #040615;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-decoration: none;
+
+  &:focus {
+    left: 24px;
+  }
+}
+
+.reveal-on-load {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.reveal-on-load.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+:focus-visible {
+  outline: 2px solid #7dd3fc;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.section-kicker {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: $color-main;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}

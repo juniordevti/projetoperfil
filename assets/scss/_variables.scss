@@ -1,0 +1,136 @@
+$font-main: "Plus Jakarta Sans";
+
+$color-main: #986dff;
+$color-white: #ffffff;
+$color-gray: #c6c6c6;
+$bg-main: #040615;
+$bg-secondary: #0c0b16;
+$bg-border: #17161f;
+$surface-1: rgba(255, 255, 255, 0.07);
+$surface-2: rgba(255, 255, 255, 0.05);
+$border-soft: rgba(255, 255, 255, 0.14);
+$text-muted: rgba(255, 255, 255, 0.7);
+$text-subtle: rgba(255, 255, 255, 0.55);
+$shadow-soft: 0 20px 60px rgba(2, 6, 23, 0.28);
+
+$gap-0: 0px;
+$gap-1: 8px;
+$gap-2: 16px;
+$gap-3: 24px;
+$gap-4: 32px;
+$gap-5: 48px;
+$gap-6: 64px;
+$gap-7: 72px;
+$gap-8: 96px;
+$gap-9: 128px;
+
+@mixin responsive-desktop {
+  @media screen and (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin responsive-tablet {
+  @media screen and (max-width: 992px) {
+    @content;
+  }
+}
+
+@mixin responsive-mobile {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin spacing-section() {
+  padding: $gap-8 $gap-5;
+  @include responsive-tablet {
+    padding: $gap-5 $gap-3;
+  }
+}
+
+@mixin flexbox-between() {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@mixin flexbox-center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin grid-layout() {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+@mixin title-section {
+  padding-bottom: $gap-3;
+  color: $color-white;
+  font: {
+    size: 4rem;
+    weight: 500;
+  }
+}
+
+@mixin hover-link() {
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: -7px;
+    left: 0;
+    background: linear-gradient(270deg, #986dff 0%, #986dff 100%);
+    transform-origin: bottom right;
+    transition: transform 0.5s cubic-bezier(0.86, 0, 0.07, 1);
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+}
+
+@mixin glass-panel() {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.04)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 22px 54px rgba(2, 6, 23, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+@mixin interactive-lift() {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-4px);
+  }
+}
+
+@mixin block-article {
+  height: auto;
+  padding: $gap-4;
+  flex-basis: 30%;
+  flex-grow: 1;
+
+  @include responsive-desktop {
+    flex-basis: calc(50% - 20px);
+  }
+
+  @include responsive-mobile {
+    flex-basis: calc(100% - 20px);
+  }
+}
